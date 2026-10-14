@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block title %}{{ 'Create account' if mode == 'register' else 'Log in' }} · StudyFlow AI{% endblock %}{% block content %}
+<div class="auth-wrap"><a class="brand mb-4 d-inline-flex" href="/">✦ StudyFlow AI</a><div class="auth-card"><span class="eyebrow">YOUR LEARNING WORKSPACE</span><h2>{{ 'Create your account' if mode == 'register' else 'Welcome back' }}</h2><p class="muted">{{ 'Start building a study routine that works for you.' if mode == 'register' else 'Log in to continue your learning journey.' }}</p>
+<form method="post" class="mt-4">
+{% if mode == 'register' %}<label class="form-label">Full name</label><input class="form-control mb-3" name="name" required maxlength="100" placeholder="Your name">{% endif %}
+<label class="form-label">Email address</label><input class="form-control mb-3" type="email" name="email" required placeholder="you@example.com">
+<label class="form-label">Password</label><input class="form-control mb-3" type="password" name="password" required minlength="8" placeholder="At least 8 characters">
+<button class="btn btn-primary w-100 py-2 mt-2">{{ 'Create account →' if mode == 'register' else 'Log in →' }}</button></form>
+<div class="text-center mt-4 small">{% if mode == 'register' %}Already registered? <a href="{{ url_for('login') }}">Log in</a>{% else %}New to StudyFlow AI? <a href="{{ url_for('register') }}">Create an account</a>{% endif %}</div></div></div>{% endblock %}
